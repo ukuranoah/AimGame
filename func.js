@@ -8,7 +8,20 @@ var scoreText = document.getElementById('score');
 function startGame(){
     setInterval(timer, 1000);
     newHitBox();
-    hb.addEventListener("click", function(){
+    
+seconds = 10
+}
+function timer(){
+    if(seconds > 0){
+        seconds -= 1;
+        el.innerText = seconds;
+    }
+    else{
+        //todo SCORE
+    }
+}
+
+hb.addEventListener("click", function(){
         if(seconds > 0){
             score++;
             scoreText.innerHTML = score;
@@ -18,21 +31,6 @@ function startGame(){
         
         
     })
-seconds = 10
-}
-function timer(){
-    if(seconds > 0){
-        seconds -= 1;
-        el.innerText = seconds;
-        hb.style.left = Math.random(width);
-        hb.style.top = Math.random(height);
-    }
-    else{
-        //todo SCORE
-    }
-}
-
-
 
 function newHitBox(){
     hb.style.display = "block";
