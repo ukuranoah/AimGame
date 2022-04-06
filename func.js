@@ -4,8 +4,21 @@ var el = document.getElementById('secs');
 var width = document.getElementById('canvas').offsetWidth;
 var height = document.getElementById('canvas').offsetHeight;
 var hb = document.getElementById('hitBox');
+var scoreText = document.getElementById('score');
 function startGame(){
     setInterval(timer, 1000);
+    newHitBox();
+    hb.addEventListener("click", function(){
+        if(seconds > 0){
+            score++;
+            scoreText.innerHTML = score;
+            hb.style.display = "none";
+            newHitBox();
+        }
+        
+        
+    })
+seconds = 10
 }
 function timer(){
     if(seconds > 0){
@@ -19,14 +32,7 @@ function timer(){
     }
 }
 
-hb.addEventListener("click", function(){
-    score++;
-    hb.style.display = "none";
-    setTimeout(() => {  
-        newHitBox();
-     }, 500);
-    
-})
+
 
 function newHitBox(){
     hb.style.display = "block";
