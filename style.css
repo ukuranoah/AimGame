@@ -1,0 +1,28 @@
+
+*{
+    font-weight:bolder;
+    color:rgb(99, 99, 99);
+}
+.container{
+    background:rgb(63, 63, 63);
+    text-align: center;
+}
+.canvas{
+    margin:auto;
+    width:400px;
+    height:400px;
+    background:rgb(99, 99, 99);
+    position:relative;
+}
+button{
+    background-color: blueviolet;
+    font-weight: bolder;
+    color:gray;
+}
+.hitBox{
+    width:30px;
+    height:30px;
+    background:rgb(255, 0, 0);
+    border-radius:100%;
+    position:absolute;
+}
