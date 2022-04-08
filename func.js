@@ -1,24 +1,30 @@
-seconds = 10;
-score = 0;
+var seconds = 10;
+var score = 0;
+var leaderboard = [];
 var el = document.getElementById('secs');
-var width = document.getElementById('canvas').offsetWidth;
-var height = document.getElementById('canvas').offsetHeight;
+
 var hb = document.getElementById('hitBox');
 var scoreText = document.getElementById('score');
+var board = document.getElementById('leaderboard');
 function startGame(){
-    setInterval(timer, 1000);
+    seconds = 10;
+    timer();
+    
     newHitBox();
     
-seconds = 10
 }
 function timer(){
-    if(seconds > 0){
-        seconds -= 1;
-        el.innerText = seconds;
-    }
-    else{
-        //todo SCORE
-    }
+    var countdown = setInterval(function(){
+        seconds--;
+        el.innerHTML = seconds;
+        if(seconds == 0){
+            leaderboard.push(score);
+            score = 0;
+            clearInterval(countdown);
+            createLeaderboard();
+        }
+    }, 1000);
+    
 }
 
 hb.addEventListener("click", function(){
@@ -29,8 +35,8 @@ hb.addEventListener("click", function(){
             newHitBox();
         }
         
-        
     })
+
 
 function newHitBox(){
     hb.style.display = "block";
@@ -39,5 +45,14 @@ function newHitBox(){
     hb.style.top = Math.floor(Math.random()*370) + "px";
 }
 
+function createLeaderboard(){
+    board.innerHTML = "<h2>Leaderboard</h2>";
+    for(i = 0; i < leaderboard.length; i++){
+        console.log('poop');
+        var p = document.createElement('p');
+        p.innerHTML = leaderboard[i];
+        board.appendChild(p);
+    }
+}
 
 
